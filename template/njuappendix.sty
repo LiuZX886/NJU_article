@@ -1,0 +1,46 @@
+% --- njuappendix.sty ---
+% Package Name:  njuappendix
+% Description:   提供附录页面的格式化
+% Author:        ZX Liu
+% Creation Date: 2025.7.27
+
+% 1. 声明这是一个 LaTeX 包文件
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{njuappendix}
+\RequirePackage{setspace} % 用于设置行距
+
+% 3. 定义附录环境 njuappendix
+\newenvironment{njuappendix}{
+  \clearpage
+  
+  % --- 步骤 1: 将"附录"添加到目录 ---
+  \phantomsection 
+  \addcontentsline{toc}{section}{附录}
+
+  % --- 步骤 2: 将“停止显示”指令写入 .toc 文件 ---
+  % 使用 \addtocontents 直接向 .toc 文件写入命令。
+  % 这条命令会在下一次编译、生成目录时执行，从而隐藏后续条目。
+  % \protect 确保命令在写入文件时不会被错误地展开。
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+
+  % --- 步骤 3: 重置计数器和页面样式 ---
+  \setcounter{section}{0} % 重置 section 计数器，使得附录从“一、”开始
+  \pagestyle{plain}       % 确保页脚是 plain 样式
+  \pagenumbering{Roman}   % 将页码格式切换为大写罗马数字并从 I 开始
+  
+  % --- 在页面上打印“附录”总标题 ---
+  \begin{center}
+    {\zihao{4}\heiti 附录}
+  \end{center}
+  
+  % --- 设置附录正文格式 ---
+  \zihao{-4}
+  \begin{spacing}{1.5}
+}{
+  % --- 附录环境结束时执行 ---
+  \end{spacing}
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
+}
+
+% 5. 文件结束标志
+\endinput

@@ -1,0 +1,91 @@
+% --- njuabstract.sty ---
+% Package Name:  njuabstract
+% Description:   提供中英文摘要和关键词的格式
+% Author:        ZX Liu
+% Creation Date: 2025.7.27
+
+% 1. 声明这是一个 LaTeX 包文件
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{njuabstract}
+\RequirePackage{environ}
+
+% 2. 定义存储摘要和关键词内容的命令
+\makeatletter
+\NewEnviron{cnabstract}{%
+  \expandafter\gdef\expandafter\@cnabstract\expandafter{\BODY}%
+}
+\NewEnviron{enabstract}{%
+  \expandafter\gdef\expandafter\@enabstract\expandafter{\BODY}%
+}
+\newcommand{\cnkeywords}[1]{\gdef\@cnkeywords{#1}}
+\newcommand{\enkeywords}[1]{\gdef\@enkeywords{#1}}
+
+% -- 初始化所有内容为空 --
+\gdef\@cnabstract{}
+\gdef\@cnkeywords{}
+\gdef\@enabstract{}
+\gdef\@enkeywords{}
+
+
+% --- 命令一: 生成中文摘要页 ---
+\newcommand{\makecnabstract}{
+  \clearpage \thispagestyle{empty}
+  \begin{center}
+    {\zihao{3}\heiti 中文摘要}
+  \end{center}
+
+    \noindent
+    {\kaishu 题目：       \@title}        \par
+    \noindent
+    {\kaishu 院系：       \@school}       \par
+    \noindent
+    {\kaishu 专业：       \@major}        \par
+    \noindent
+    {\kaishu 学生姓名：   \@author}       \par
+    \noindent
+    {\kaishu 指导教师：   \@instructor}   \par
+    \noindent 
+    {\kaishu 摘要：}                      \par
+    {\kaishu \@cnabstract} % 摘要正文内容
+
+  \vspace{1.5em}
+
+  % -- 关键词 --
+  \noindent
+  {\kaishu 关键词：}{\kaishu \@cnkeywords}
+  
+  \clearpage
+}
+
+% --- 命令二: 生成英文摘要页 ---
+\newcommand{\makeenabstract}{
+  \clearpage \thispagestyle{empty}
+  \begin{center}
+    {\zihao{3}\heiti 英文摘要}
+  \end{center}
+
+    \noindent
+    {THESIS:         \@entitle}       \par
+    \noindent
+    {DEPARTMENT:     \@enschool}      \par
+    \noindent
+    {SPECIALIZATION: \@enmajor}       \par
+    \noindent
+    {UNDERGRADUATE:  \@enauthor}      \par
+    \noindent
+    {MENTOR:         \@eninstructor}  \par
+    \noindent
+    {ABSTRACT:}                     \par
+    \noindent
+    {\@enabstract} % 英文摘要正文内容
+
+    \vspace{1.5em}
+
+  % -- Keywords --
+  \noindent
+  {KEYWORDS:} {\@enkeywords}
+  \clearpage
+}
+
+\makeatother
+\endinput

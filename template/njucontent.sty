@@ -1,0 +1,47 @@
+% --- njucontent.sty ---
+% Package Name:  njucontent
+% Description:   提供目录页面的格式化
+% Author:        ZX Liu
+% Creation Date: 2025.7.27
+
+% 1. 声明这是一个 LaTeX 包文件
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{njucontent}
+\RequirePackage{tocloft}        % 用于定制目录样式
+
+% 2. 自定义 \maketableofcontents 命令
+\makeatletter
+\newcommand{\maketableofcontents}{
+  \thispagestyle{empty}
+  % -- 设置目录标题 "目录" 的格式 --
+  \renewcommand{\contentsname}{
+    \begin{center}
+        \centering \zihao{3} \bfseries 目录
+    \end{center}
+  }
+  
+  % -- 设置目录条目字体 --
+  % 1. 节标题 (section): 小四宋体
+  \renewcommand{\cftsecfont}{\zihao{4}\heiti}
+  % 2. 小节标题 (subsection): 小四宋体
+  \renewcommand{\cftsubsecfont}{\zihao{-4}}
+  % 3. 小小节标题 (subsubsection): 小四宋体
+  \renewcommand{\cftsubsubsecfont}{\zihao{-4}}
+  
+  % -- 设置页码字体 --
+  % 统一将页码字体设置为小四宋体
+  \renewcommand{\cftsecpagefont}{\zihao{-4}}
+  \renewcommand{\cftsubsecpagefont}{\zihao{-4}}
+  \renewcommand{\cftsubsubsecpagefont}{\zihao{-4}}
+
+  % -- 生成目录 --
+  \tableofcontents
+  \thispagestyle{empty}
+  \clearpage
+  \setcounter{page}{1}
+}
+
+\makeatother
+
+% 4. 文件结束标志
+\endinput

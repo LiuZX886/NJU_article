@@ -1,0 +1,43 @@
+% --- preamble.tex ---
+% 本文件包含了常用的LaTeX宏包和推荐设置。
+% 请在主文件 (main.tex) 的导言区使用 \input{preamble.tex} 来加载。
+
+% --- 数学环境宏包 ---
+\usepackage{amsmath}        % AMS 数学公式环境，提供 align, gather 等
+\usepackage{bm}             % 用于处理数学公式中的粗体 \bm{}
+
+% --- 图形与浮动体宏包 ---
+\usepackage{subcaption}     % 支持子图、子表环境 (subfigure, subtable)
+\usepackage{float}          % 提供 [H] 浮动体选项，强制将图表固定在当前位置
+\usepackage{wrapfig}        % 支持文字环绕图形
+
+% --- 表格工具宏包 ---
+\usepackage{booktabs}       % 提供专业的三线表命令 (\toprule, \midrule, \bottomrule)
+\usepackage{longtable}      % 支持跨页长表格
+\usepackage{multirow}       % 支持表格内的多行合并单元格
+% tabularx 宏包已在 njuabstract.sty 中加载，此处无需重复
+
+% --- 排版与列表工具 ---
+\usepackage{enumitem}       % 方便地自定义列表环境 (itemize, enumerate)
+\usepackage{microtype}      % 改善文本间距和断字的微调排版工具，提升阅读体验
+\usepackage{lipsum}         % 用于生成测试用的随机文本 \lipsum[1-10]
+
+% --- 超链接详细设置 ---
+\usepackage[
+    colorlinks=true,            % 将链接显示为彩色而非方框
+    linkcolor=black,            % 内部链接颜色(目录、章节跳转)
+    citecolor=blue,             % 参考文献引用颜色
+    urlcolor=blue,              % URL链接颜色
+    bookmarksopen=true,         % 打开PDF时展开书签
+    bookmarksnumbered=true,     % 在书签中显示章节编号
+    pdfusetitle                 % 自动、安全地使用 \title 和 \author 作为PDF元数据
+]{hyperref}
+
+
+% --- 其他常用工具 ---
+% \usepackage{todonotes}      % 添加待办事项和边注，方便草稿阶段修改
+
+% --- 自定义命令区 ---
+% 您可以在这里添加您自己的常用命令
+% 示例:
+% \newcommand{\R}{\mathbb{R}} % 定义实数集符号

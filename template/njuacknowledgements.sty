@@ -1,0 +1,36 @@
+% --- njuacknowledgements.sty ---
+% Package Name:  njuacknowledgements
+% Description:   提供致谢页面的格式化
+% Author:        ZX Liu
+% Creation Date: 2025.7.27
+
+% 1. 声明这是一个 LaTeX 包文件
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{njuacknowledgements}
+\RequirePackage{setspace} % 用于设置行距
+
+% 3. 定义 \makeacknowledgements 命令
+%    使用环境的方式，让用户将致谢内容包裹起来
+\newenvironment{njuacknowledgements}{
+  \clearpage
+  
+  % --- 步骤 1: 手动打印居中的标题 ---
+  \begin{center}
+    {\zihao{4}\heiti 致谢}
+  \end{center}
+  
+  % --- 步骤 2: 手动将标题添加到目录 ---
+  % \phantomsection 用于确保超链接定位准确
+  \phantomsection
+  \addcontentsline{toc}{section}{致谢}
+  
+  % --- 步骤 3: 设置正文格式 ---
+  \zihao{-4}
+  \begin{spacing}{1.5}
+}{
+  % --- 环境结束时执行 ---
+  \end{spacing}
+}
+
+% 4. 文件结束标志
+\endinput

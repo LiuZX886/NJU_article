@@ -1,0 +1,32 @@
+\documentclass{NJU_article}
+\input{preamble.tex}
+\input{info.tex}
+
+\begin{document}
+
+% --- 生成封面 ---
+\makeformalcover
+
+% --- 生成摘要页 ---
+\include{content/abstract_cn}
+\include{content/abstract_en}
+\makecnabstract
+\makeenabstract
+
+% --- 生成目录 ---
+\maketableofcontents
+
+% --- 生成正文 ---
+\makesimplecover
+\input{content/00_introduction}
+
+% --- 生成参考文献 ---
+\makenjureference
+
+% --- 生成致谢 ---
+\include{content/acknowledgements}
+
+% --- 生成附录 ---
+\include{content/appendix}
+
+\end{document}

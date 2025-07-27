@@ -1,0 +1,120 @@
+% --- njucover.sty ---
+% Package Name:  njucover
+% Description:   提供两种封面样式: simple 和 formal
+% Author:        ZX Liu
+% Creation Date: 2025.7.27
+
+% 1. 声明这是一个 LaTeX 包文件
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{njucover}
+\RequirePackage{graphicx}       % 用于插入图片
+
+% 2. 封面信息定义
+\makeatletter
+% -- 定义存储封面信息的命令 --
+% \title 和 \author 由 LaTeX 内核提供
+\def\subtitle#1{\gdef\@subtitle{#1}}
+\def\studentID#1{\gdef\@studentID{#1}}
+\def\school#1{\gdef\@school{#1}}
+\def\coursename#1{\gdef\@coursename{#1}}
+\def\instructor#1{\gdef\@instructor{#1}}
+\def\major#1{\gdef\@major{#1}}
+\def\grade#1{\gdef\@grade{#1}}
+\def\submissiondate#1{\gdef\@submissiondate{#1}}
+\def\enauthor#1{\gdef\@enauthor{#1}}
+\def\entitle#1{\gdef\@entitle{#1}}
+\def\enschool#1{\gdef\@enschool{#1}}
+\def\enmajor#1{\gdef\@enmajor{#1}}
+\def\encoursename#1{\gdef\@encoursename{#1}}
+\def\eninstructor#1{\gdef\@eninstructor{#1}}
+
+% -- 初始化所有可选信息为空 --
+\subtitle{}
+\studentID{}
+\school{}
+\coursename{}
+\instructor{}
+\major{} 
+\grade{} 
+\submissiondate{}
+\entitle{}
+\enschool{}
+\enmajor{}
+\encoursename{}
+\eninstructor{}
+
+% --- 命令一: \makesimplecover (标题块样式) ---
+\newcommand{\makesimplecover}{
+  \begin{spacing}{1.5}
+    \begin{center}
+      {\zihao{3}\bfseries \@title\par}         % 主标题，三号黑体
+    \end{center}
+    \ifx\@subtitle\@empty\else
+      \begin{flushright}
+        {\zihao{-4}\bfseries ——\@subtitle\par} % 副标题（如适用），小四宋体加粗
+      \end{flushright}
+    \fi
+    \begin{center}
+      {\zihao{-4}
+        \ifx\@studentID\@empty\else
+          \textbf{学号：}\@studentID\qquad     % 学号（如适用）  
+        \fi
+        \textbf{姓名：}\@author                % 姓名
+        \ifx\@school\@empty\else
+          \qquad \textbf{学院：}\@school       % 学院（如适用）
+        \fi}
+    \end{center}
+  \end{spacing}
+}
+
+% --- 命令二: \makeformalcover (正式封面样式) ---
+\newcommand*\nju@info@line[2]{
+    \makebox[4em][l]{\heiti #1}
+    \vbox{
+        \hbox{\makebox[10cm][c]{ #2}}
+        \kern  2.2pt                   % 文字与下划线之间的距离
+        \hrule width 10cm height 1pt   % 下划线：宽度 10cm, 高度 1pt
+    }
+}
+
+\newcommand{\makeformalcover}{%
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \centering
+
+    \includegraphics[height=3cm]{template/src/nju-logo.png} \\
+    \vspace{0.5cm}
+    \includegraphics[height=4.05cm]{template/src/nju-name.png}
+    
+    \vfill
+    
+    {\zihao{1}\heiti 本科生课程论文}
+    
+    \vfill
+    
+    % -- 使用 minipage 环境来整体控制信息块的位置和宽度 --
+    \begin{minipage}{0.85\textwidth}
+      \centering
+      \zihao{-3}
+      
+      \nju@info@line  {院\hfill 系}  {\@school}\\[0.5em]
+      \nju@info@line  {专\hfill 业}  {\@major}\\[0.5em]
+      \nju@info@line  {题\hfill 目}  {\@title}\\[0.5em]
+      \nju@info@line  {年\hfill 级}  {\@grade}\\[0.5em]
+      \nju@info@line  {学\hfill 号}  {\@studentID}\\[0.5em]
+      \nju@info@line  {学生姓名}     {\@author}\\[0.5em]
+      \nju@info@line  {课程名称}     {\@coursename}\\[0.5em]
+      \nju@info@line  {指导教师}     {\@instructor}\\[0.5em]
+      \nju@info@line  {提交日期}     {\@submissiondate}\\
+      
+    \end{minipage}
+    
+    \vfill
+  \end{titlepage}
+  \clearpage
+}
+
+\makeatother
+
+% 3. 文件结束标志
+\endinput

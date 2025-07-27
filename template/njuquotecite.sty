@@ -1,0 +1,26 @@
+% --- njucitation.sty ---
+% Package Name:  njucitation
+% Description:   自定义引用文段和脚注的命令
+% Author:        ZX Liu
+% Creation Date: 2025.7.27
+
+% 1. 声明这是一个 LaTeX 包文件
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{njuquotecite}
+
+% 2. 自定义引用命令 (\quotecite)
+\makeatletter
+% 定义 \quotecite{引文内容}{脚注内容} 命令
+% #1: 引文, 设置为楷体
+% #2: 脚注, 设置为五号字
+\newcommand{\quotecite}[2]{%
+  {\kaishu #1}\footnote{\zihao{5}#2}%
+}
+% 重新定义脚注文本的格式, 在脚注编号后加上点和空格
+\renewcommand{\@makefntext}[1]{%
+  \noindent\makebox[2em][l]{\@thefnmark.}#1%
+}
+\makeatother
+
+% 3. 文件结束标志
+\endinput

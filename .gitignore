@@ -1,0 +1,35 @@
+# LaTeX Auxiliary Files
+# -------------------------------------
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.lof
+*.lot
+*.out
+*.synctex.gz
+*.toc
+*.run.xml
+
+# Minted Cache Directory
+# -------------------------------------
+_minted-*/
+
+# Final Output
+# -------------------------------------
+# 通常不将最终生成的PDF文件加入版本控制
+*.pdf
+
+# Editor & OS Specific Files
+# -------------------------------------
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db

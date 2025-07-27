@@ -1,0 +1,35 @@
+% --- njureference.sty ---
+% Package Name:  njureference
+% Description:   提供参考文献页面的格式化
+% Author:        ZX Liu
+% Creation Date:   2025.7.27
+
+% 1. 声明这是一个 LaTeX 包文件
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{njureference}
+\RequirePackage[
+  style = gb7714-2015,          % 参考文献样式
+  backend = biber               % 使用 biber 作为后端处理
+]{biblatex}                     % 用于参考文献管理
+\addbibresource{reference.bib}  % 添加参考文献文件
+
+% 2. 定义 \makenjureference 命令
+\newcommand{\makenjureference}{
+  \clearpage
+  
+  % --- 步骤 1: 手动打印居中的标题 ---
+  \begin{center}
+    \zihao{4}\heiti 参考文献
+  \end{center}
+  
+  % --- 步骤 2: 手动将标题添加到目录 ---
+  % \phantomsection 用于确保超链接定位准确
+  \phantomsection
+  \addcontentsline{toc}{section}{参考文献}
+  
+  % --- 步骤 3: 只打印参考文献条目, 不生成任何标题 ---
+  \printbibliography[heading=none]
+}
+
+% 3. 文件结束标志
+\endinput

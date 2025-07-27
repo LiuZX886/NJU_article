@@ -1,0 +1,45 @@
+% --- njucode.sty ---
+% Package Name:  njucode
+% Description:   提供代码块和语法高亮 (基于 minted)
+% Author:        ZX Liu
+% Creation Date: 2025.7.27
+
+% 1. 声明这是一个 LaTeX 包文件
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{njucode}
+\RequirePackage{xcolor}   % 用于定义颜色
+\RequirePackage{minted}   % 用于代码高亮
+
+% 2. 定义代码块使用的等宽字体 (Source Code Pro)
+\setmonofont{SourceCodePro-VariableFont_wght.ttf}[
+    Path = template/fonts/,
+    ItalicFont = SourceCodePro-Italic-VariableFont_wght.ttf,
+    BoldFont = SourceCodePro-VariableFont_wght.ttf,
+    BoldItalicFont = SourceCodePro-Italic-VariableFont_wght.ttf,
+    BoldFeatures = {Weight=700},
+    BoldItalicFeatures = {Weight=700}
+]
+
+% 3. 定义代码块的统一视觉样式
+% 定义一个淡灰色用于代码背景
+\definecolor{codegray}{gray}{0.95}
+
+% 使用 \setminted 为所有 minted 环境设置默认选项
+% 这个样式对所有语言（Python, C, C++, Java 等）都有效
+\setminted{
+  bgcolor      = codegray,  % 设置背景颜色
+  fontsize     = \small,    % 设置字体大小为 small
+  linenos,                  % 显示行号
+  frame        = lines,     % 使用线条作为边框
+  framesep     = 2mm,       % 边框与代码的间距
+  breaklines,               % 允许长代码行自动换行
+  python3      = true       % 对 Python 代码默认使用 Python 3 语法
+}
+
+% --- 4. 定义行内代码命令 ---
+% \code{} 命令会将其中的文本设置为等宽字体 (由 \setmonofont 定义好的 Source Code Pro)
+% \texttt{} 是一个更现代的命令，它会使用 \ttfamily 定义的字体
+\newcommand{\code}[1]{\texttt{#1}}
+
+% 4. 文件结束标志
+\endinput
