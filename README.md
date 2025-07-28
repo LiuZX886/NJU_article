@@ -4,7 +4,7 @@
 
 这是一个为南京大学本科生课程论文设计的 LaTeX 模板。
 
-![正式封面](template/src/fig/fig (1).png)
+![正式封面](https://raw.gitmirror.com/LiuZX886/NJU_article/main/template/src/fig/fig%20(1).png)
 
 本模板基于 **XeLaTeX** 引擎，推荐使用`latexmk`编译。通过高度模块化的 `.sty` 文件设计，本模板在保持使用简单的同时，也为进一步定制提供了可能。
 
@@ -88,14 +88,15 @@ NJU_article/
   <tbody>
     <tr>
       <td style="padding: 5px;">
-        <img src="template/src/fig/fig (1).png" alt="正式封面" style="width: 100%;">
+        <img src="https://raw.gitmirror.com/LiuZX886/NJU_article/main/template/src/fig/fig%20(1).png" alt="正式封面" style="width: 100%;">
       </td>
       <td style="padding: 5px;">
-        <img src="template/src/fig/fig (5).png" alt="简单封面" style="width: 100%;">
+        <img src="https://raw.gitmirror.com/LiuZX886/NJU_article/main/template/src/fig/fig%20(5).png" alt="简单封面" style="width: 100%;">
       </td>
     </tr>
   </tbody>
 </table>
+
 
 其中正式封面是单独的一页；简单封面则是一个简单的标题和作者信息，下方则直接接上正文，其中副标题、学号、学院是可选的。封面所需的信息在`info.tex`中输入
 
@@ -113,37 +114,38 @@ NJU_article/
   <tbody>
     <tr>
       <td style="padding: 5px;">
-        <img src="template/src/fig/fig (2).png" alt="中文摘要" style="width: 100%;">
+        <img src="https://raw.githubusercontent.com/LiuZX886/NJU_article/main/template/src/fig/fig%20(2).png" alt="中文摘要" style="width: 100%;">
       </td>
       <td style="padding: 5px;">
-        <img src="template/src/fig/fig (3).png" alt="英文摘要" style="width: 100%;">
+        <img src="https://raw.githubusercontent.com/LiuZX886/NJU_article/main/template/src/fig/fig%20(3).png" alt="英文摘要" style="width: 100%;">
       </td>
     </tr>
   </tbody>
 </table>
+
 ### 目录
 
 在`njucontent.sty`中提供了目录生成命令`maketableofcontents`，可以生成如下目录：
 
-![目录](template/src/fig/fig (4).png)
+![目录](https://raw.gitmirror.com/LiuZX886/NJU_article/main/template/src/fig/fig%20(4).png)
 
 ### 参考文献
 
 在`njureference.sty`中提供了参考文献生成命令`makenjureference`，生成的参考文献如下：
 
-![参考文献](template/src/fig/fig (6).png)
+![参考文献](https://raw.gitmirror.com/LiuZX886/NJU_article/main/template/src/fig/fig%20(6).png)
 
 ### 致谢
 
 在`njuacknowledgements.sty`中提供了致谢环境命令，若需要致谢则直接在`content/acknowledgements`中修改即可。致谢样式如下：
 
-![致谢](template/src/fig/fig (7).png)
+![致谢](https://raw.gitmirror.com/LiuZX886/NJU_article/main/template/src/fig/fig%20(7).png)
 
 ### 附录
 
 在`njuappendix.tex`提供了附录环境，可选，在`content/appendix`中修改即可，附录效果如下：
 
-![附录](template/src/fig/fig (8).png)
+![附录](https://raw.gitmirror.com/LiuZX886/NJU_article/main/template/src/fig/fig%20(8).png)
 
 ### 代码块
 
