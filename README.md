@@ -87,11 +87,11 @@ NJU_article/
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 5px;">
-        <img src="https://raw.gitmirror.com/LiuZX886/NJU_article/main/template/src/fig/fig%20(1).png" alt="正式封面" style="width: 100%;">
+      <td style="padding: 5px; vertical-align: top;">
+        <img src="https://raw.gitmirror.com/LiuZX886/NJU_article/main/template/src/fig/fig%20(1).png" alt="正式封面" style="width: 100%; height: 600px; object-fit: contain;">
       </td>
-      <td style="padding: 5px;">
-        <img src="https://raw.gitmirror.com/LiuZX886/NJU_article/main/template/src/fig/fig%20(5).png" alt="简单封面" style="width: 100%;">
+      <td style="padding: 5px; vertical-align: top;">
+        <img src="https://raw.gitmirror.com/LiuZX886/NJU_article/main/template/src/fig/fig%20(5).png" alt="简单封面" style="width: 100%; height: 600px; object-fit: contain;">
       </td>
     </tr>
   </tbody>
