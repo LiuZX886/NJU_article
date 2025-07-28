@@ -59,7 +59,7 @@ NJU_article/
     * **填写封面信息**: 打开 `main.tex` 文件，在文档的导言区（`\documentclass` 和 `\begin{document}` 之间）找到并修改 `\title`, `\author`, `\school` 等命令，填入您的个人信息。
     * **填写摘要信息**: 同样在 `main.tex` 的导言区，修改 `\cnabstract`, `\cnkeywords`, `\enabstract`, `\enkeywords` 的内容。
     * **撰写正文**: 在 `main.tex` 的 `\begin{document}` 之后开始撰写您的正文内容。您可以使用 `\section`, `\subsection` 等命令来组织文章结构。
-    * **添加参考文献**: 打开 `reference.bib` 文件，按照 BibTeX 格式添加您的文献条目。在正文中使用 `\cite{}` 命令来引用它们。
+    * **添加参考文献**: 打开 `reference.bib` 文件，按照 BibTeX 格式添加您的文献条目。在正文中使用 `\cite{}` 命令来引用它们。`bib`条目书写可参考
     * **插入代码**: 使用 `\begin{minted}{python}` ... `\end{minted}` 环境来插入带有语法高亮的代码块。
     * **撰写致谢与附录**: 分别使用 `njuacknowledgements` 和 `njuappendix` 环境来包裹相应内容。
     
@@ -176,6 +176,7 @@ NJU_article/
 2. [党政机关公文格式国家标准（GB/T 9704-2012）](https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=F3CC9BEF482524C895FDA7A08BB4A70E)
 3. [《文后参考文献著录规则》（GB／T7714-2015） | 教育部高等学校图书情报工作指导委员会](http://www.scal.edu.cn/dxtsgxb/201906120155)
 4. [NJU_LaTex_Template南京大学通用作业模板](https://github.com/Sensente/NJU_LaTex_Template/)
+5. [附件1：2025届本科毕业论文工作手册](https://github.com/LiuZX886/NJU_article/blob/main/template/src/附件1：2025届本科毕业论文工作手册)
 
 ## 致谢
 
