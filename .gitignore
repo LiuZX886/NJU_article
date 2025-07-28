@@ -13,15 +13,14 @@
 *.synctex.gz
 *.toc
 *.run.xml
+*.sh
+
+# 忽略所有zip压缩包
+*.zip
 
 # Minted Cache Directory
 # -------------------------------------
 _minted-*/
-
-# Final Output
-# -------------------------------------
-# 通常不将最终生成的PDF文件加入版本控制
-*.pdf
 
 # Editor & OS Specific Files
 # -------------------------------------
