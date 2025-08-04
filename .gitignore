@@ -18,6 +18,9 @@
 # 忽略所有zip压缩包
 *.zip
 
+# 忽略release目录
+release/
+
 # Minted Cache Directory
 # -------------------------------------
 _minted-*/
