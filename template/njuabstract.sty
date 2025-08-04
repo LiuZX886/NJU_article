@@ -3,11 +3,13 @@
 % Description:   提供中英文摘要和关键词的格式
 % Author:        ZX Liu
 % Creation Date: 2025.7.27
+% Latest Update: 2025.8.4
 
 % 1. 声明这是一个 LaTeX 包文件
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{njuabstract}
 \RequirePackage{environ}
+\RequirePackage{fontspec}
 
 % 2. 定义存储摘要和关键词内容的命令
 \makeatletter
@@ -26,7 +28,6 @@
 \gdef\@enabstract{}
 \gdef\@enkeywords{}
 
-
 % --- 命令一: 生成中文摘要页 ---
 \newcommand{\makecnabstract}{
   \clearpage \thispagestyle{empty}
@@ -35,24 +36,24 @@
   \end{center}
 
     \noindent
-    {\kaishu 题目：       \@title}        \par
+    {\kaishu {\bfseries 题目：}     \@title}        \par
     \noindent
-    {\kaishu 院系：       \@school}       \par
+    {\kaishu {\bfseries 院系：}     \@school}       \par
     \noindent
-    {\kaishu 专业：       \@major}        \par
+    {\kaishu {\bfseries 专业：}     \@major}        \par
     \noindent
-    {\kaishu 学生姓名：   \@author}       \par
+    {\kaishu {\bfseries 学生姓名：}  \@author}      \par
     \noindent
-    {\kaishu 指导教师：   \@instructor}   \par
+    {\kaishu {\bfseries 指导教师： } \@instructor}  \par
     \noindent 
-    {\kaishu 摘要：}                      \par
+    {\kaishu \bfseries 摘要：}                      \par
     {\kaishu \@cnabstract} % 摘要正文内容
 
   \vspace{1.5em}
 
   % -- 关键词 --
   \noindent
-  {\kaishu 关键词：}{\kaishu \@cnkeywords}
+  {\kaishu \bfseries 关键词：}{\kaishu \@cnkeywords}
   
   \clearpage
 }
@@ -64,25 +65,25 @@
     {\zihao{3}\heiti 英文摘要}
   \end{center}
 
-    \noindent
+    \noindent 
     {THESIS:         \@entitle}       \par
-    \noindent
+    \noindent 
     {DEPARTMENT:     \@enschool}      \par
-    \noindent
+    \noindent 
     {SPECIALIZATION: \@enmajor}       \par
-    \noindent
+    \noindent 
     {UNDERGRADUATE:  \@enauthor}      \par
-    \noindent
+    \noindent 
     {MENTOR:         \@eninstructor}  \par
-    \noindent
+    \noindent 
     {ABSTRACT:}                     \par
-    \noindent
+    \noindent 
     {\@enabstract} % 英文摘要正文内容
 
     \vspace{1.5em}
 
   % -- Keywords --
-  \noindent
+  \noindent 
   {KEYWORDS:} {\@enkeywords}
   \clearpage
 }

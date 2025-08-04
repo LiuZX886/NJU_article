@@ -3,6 +3,7 @@
 % Description:   提供两种封面样式: simple 和 formal
 % Author:        ZX Liu
 % Creation Date: 2025.7.27
+% Latest Update: 2025.8.4
 
 % 1. 声明这是一个 LaTeX 包文件
 \NeedsTeXFormat{LaTeX2e}
@@ -48,15 +49,15 @@
 \newcommand{\makesimplecover}{
   \begin{spacing}{1.5}
     \begin{center}
-      {\zihao{3}\bfseries \@title\par}         % 主标题，三号黑体
+      {\zihao{3}\bfseries\heiti \@title\par} % 主标题，三号黑体
     \end{center}
     \ifx\@subtitle\@empty\else
       \begin{flushright}
-        {\zihao{-4}\bfseries ——\@subtitle\par} % 副标题（如适用），小四宋体加粗
+        {\zihao{-4}\bfseries\songti ——\@subtitle\par} % 副标题（如适用），小四宋体加粗
       \end{flushright}
     \fi
     \begin{center}
-      {\zihao{-4}
+      {\zihao{-4} \songti
         \ifx\@studentID\@empty\else
           \textbf{学号：}\@studentID\qquad     % 学号（如适用）  
         \fi
@@ -89,14 +90,14 @@
     
     \vfill
     
-    {\zihao{1}\heiti 本科生课程论文}
+    {\zihao{1}\heiti 奔赴计划结题汇报}
     
     \vfill
     
     % -- 使用 minipage 环境来整体控制信息块的位置和宽度 --
     \begin{minipage}{0.85\textwidth}
       \centering
-      \zihao{-3}
+      \zihao{-3} \songti
       
       \nju@info@line  {院\hfill 系}  {\@school}\\[0.5em]
       \nju@info@line  {专\hfill 业}  {\@major}\\[0.5em]
@@ -104,7 +105,7 @@
       \nju@info@line  {年\hfill 级}  {\@grade}\\[0.5em]
       \nju@info@line  {学\hfill 号}  {\@studentID}\\[0.5em]
       \nju@info@line  {学生姓名}     {\@author}\\[0.5em]
-      \nju@info@line  {课程名称}     {\@coursename}\\[0.5em]
+      %\nju@info@line  {课程名称}     {\@coursename}\\[0.5em]
       \nju@info@line  {指导教师}     {\@instructor}\\[0.5em]
       \nju@info@line  {提交日期}     {\@submissiondate}\\
       

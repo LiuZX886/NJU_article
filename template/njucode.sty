@@ -2,13 +2,15 @@
 % Package Name:  njucode
 % Description:   提供代码块和语法高亮 (基于 minted)
 % Author:        ZX Liu
-% Creation Date: 2025.7.27
+% Creation Date: 2025.8.1
+% Latest Update: 2025.8.4
 
 % 1. 声明这是一个 LaTeX 包文件
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{njucode}
-\RequirePackage{xcolor}   % 用于定义颜色
-\RequirePackage{minted}   % 用于代码高亮
+\RequirePackage{xcolor}            % 用于定义颜色
+\RequirePackage{minted}            % 用于代码高亮
+\RequirePackage[most]{tcolorbox}   % 用于代码块样式
 
 % 2. 定义代码块使用的等宽字体 (Source Code Pro)
 \setmonofont{SourceCodePro-VariableFont_wght.ttf}[
@@ -22,7 +24,7 @@
 
 % 3. 定义代码块的统一视觉样式
 % 定义一个淡灰色用于代码背景
-\definecolor{codegray}{gray}{0.95}
+\definecolor{codegray}{rgb}{0.95,0.95,0.95}
 
 % 使用 \setminted 为所有 minted 环境设置默认选项
 % 这个样式对所有语言（Python, C, C++, Java 等）都有效
@@ -39,7 +41,17 @@
 % --- 4. 定义行内代码命令 ---
 % \code{} 命令会将其中的文本设置为等宽字体 (由 \setmonofont 定义好的 Source Code Pro)
 % \texttt{} 是一个更现代的命令，它会使用 \ttfamily 定义的字体
-\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\code}[1]{\tcbox[
+  colback=codegray,     % 背景颜色
+  boxrule=0pt,          % 无边框
+  nobeforeafter,        % 移除盒子前后的垂直间距
+  arc=2pt,              % 一个小而平滑的圆角半径
+  left=1pt,             % 左侧内边距
+  right=1pt,            % 右侧内边距
+  top=0pt,              % 强制顶部内边距为0
+  bottom=0pt,           % 强制底部内边距为0
+  on line               % 使背景在行内显示
+]{\texttt{#1}}}
 
 % 4. 文件结束标志
 \endinput

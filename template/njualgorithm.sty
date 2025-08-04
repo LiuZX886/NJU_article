@@ -1,0 +1,43 @@
+% --- njualgorithm.sty ---
+% Package Name:  njualgorithm
+% Description:   为南京大学本科生报告模板提供 CLRS 风格的伪代码样式 (高级字体版)
+% Author:        ZX Liu
+% Creation Date: 2025.8.3
+% Latest Update: 2025.8.4
+% Dependencies:  algcompatible, amsmath
+
+% 1. 声明这是一个 LaTeX 包文件
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{njualgorithm}
+
+% 2. 引入 algorithm2e 宏包并进行配置
+% ruled: 使用带上下横线的盒子样式
+% linesnumbered: 显示行号
+% vlined: 在 if/for 等代码块旁使用垂直线表示范围
+\RequirePackage[ruled,vlined,linesnumbered]{algorithm2e}
+
+% 3. 样式定制
+% --- 步骤 3.1: 全局字体设置 ---
+% 设置算法主体字体为小四号 (会自动使用 Times New Roman)
+\SetAlFnt{\zihao{-4}}
+
+% --- 步骤 3.2: 标题样式设置 ---
+% 保持标题为 "Algorithm"
+\renewcommand{\algorithmcfname}{Algorithm}
+% 设置标题 "Algorithm 1" 的字体为小四粗体
+\SetAlCapFnt{\zihao{-4}\bfseries}
+% 设置标题名称 (caption) 的字体为小四粗体
+\SetAlCapNameFnt{\zihao{-4}\bfseries}
+
+% --- 步骤 3.3: 关键词样式 ---
+% 保持 Input/Output 为英文，并设置为粗体
+\SetKwInOut{Input}{\bfseries Input}
+\SetKwInOut{Output}{\bfseries Output}
+
+% --- 步骤 3.4: 注释样式 ---
+% 设置注释字体为小四宋体 (英文部分会自动使用 Times)
+% 这样可以支持中英文混合注释
+\SetCommentSty{songti}
+
+% 4. 文件结束标志
+\endinput

@@ -1,0 +1,88 @@
+% --- njufigtab.sty ---
+% Package Name:  njufigtab
+% Description:   提供图表样式的格式化 (南京大学本科生课程论文)
+% Author:        ZX Liu
+% Creation Date: 2025.8.2
+% Latest Update: 2025.8.4
+
+% 1. 声明这是一个 LaTeX 包文件
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{njufigtab}    
+\RequirePackage{graphicx}    % 用于插入图片
+\RequirePackage{caption}     % 用于设置图表标题样式
+\RequirePackage{booktabs}    % 用于美化表格
+\RequirePackage{longtable}   % 用于跨页表格
+\RequirePackage{etoolbox}    % 用于修改现有环境
+\RequirePackage{xparse}      % 用于定义新的命令
+
+% 2. 表格 (Table & Longtable) 设置
+% --- 定义表格标题字体 ---
+\DeclareCaptionFont{njuCapFont}{\zihao{5}\songti\bfseries}
+
+% --- 自动设置表格内部格式 ---
+\AtBeginEnvironment{table}{\centering\songti\zihao{5}}
+\AtBeginEnvironment{longtable}{\centering\songti\zihao{5}}
+
+% --- 设置各类表格的标题格式 ---
+\captionsetup[table,longtable]{
+  name = {表},
+  labelsep = space,
+  justification = centering,
+  font = njuCapFont,
+  width = 0.9\textwidth,
+  skip = 6pt
+}
+
+% --- 设置续表格式 ---
+\makeatletter
+\def\LT@cpt@cont{\hfill\songti\zihao{5} 续表 \thetable}
+\makeatother
+
+% 3. 图片 (Figure) 的高级标题命令
+% --- 定义字体样式 ---
+\DeclareCaptionFont{njuFigTitleFont}{\zihao{5}\songti\bfseries} % 标题: 五号宋体加粗
+\DeclareCaptionFont{njuFigDescFont}{\zihao{5}}\songti % 描述: 五号宋体
+\newcommand{\njuFigTitleFont}{\zihao{5}\songti\bfseries}
+\newcommand{\njuFigDescFont}{\zihao{5}\songti}
+
+% --- 定义新的图片标题命令 \njucaption ---
+% 用法1 (仅标题): \njucaption{标题}
+% 用法2 (标题+描述): \njucaption[描述]{标题}
+\NewDocumentCommand{\njucaption}{o m}{%
+  % #1: Optional Description, #2: Mandatory Title
+  \IfNoValueTF{#1}
+    % --- 情况1: 仅标题 ---
+    % 居中对齐, 标签后跟点和空格
+    {
+      \captionsetup{
+        name = {\njuFigTitleFont 图}, 
+        type = figure, 
+        width = 0.85\textwidth,
+        justification = centering, 
+        singlelinecheck = on, 
+        labelsep = period,
+        labelfont = njuFigTitleFont
+      }
+      \caption{\njuFigTitleFont #2}
+    }
+    % --- 情况2: 标题 + 描述 ---
+    % 两端对齐, 标签后跟点和空格
+    {
+       \captionsetup{
+         name = {\njuFigTitleFont 图},
+         type = figure,
+         width = 0.85\textwidth, 
+         justification = justified, 
+         singlelinecheck = off, 
+         labelsep = period,
+         labelfont = njuFigTitleFont
+       }
+       \caption[#2]{% 将纯标题传递给图目录
+         {\njuFigTitleFont #2} \,
+         {\njuFigDescFont #1}
+       }
+    }
+}
+
+% 4. 文件结束标志
+\endinput

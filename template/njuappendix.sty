@@ -3,17 +3,22 @@
 % Description:   提供附录页面的格式化
 % Author:        ZX Liu
 % Creation Date: 2025.7.27
+% Latest Update: 2025.8.4
 
 % 1. 声明这是一个 LaTeX 包文件
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{njuappendix}
 \RequirePackage{setspace} % 用于设置行距
+\RequirePackage{etoolbox} % 用于处理条件和计数器
+\RequirePackage{titlesec} % 用于处理标题格式
+\RequirePackage{ifthen}   % 用于条件判断
 
 % 3. 定义附录环境 njuappendix
 \newenvironment{njuappendix}{
   \clearpage
   
   % --- 步骤 1: 将"附录"添加到目录 ---
+  \appendix
   \phantomsection 
   \addcontentsline{toc}{section}{附录}
 
@@ -24,7 +29,6 @@
   \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
 
   % --- 步骤 3: 重置计数器和页面样式 ---
-  \setcounter{section}{0} % 重置 section 计数器，使得附录从“一、”开始
   \pagestyle{plain}       % 确保页脚是 plain 样式
   \pagenumbering{Roman}   % 将页码格式切换为大写罗马数字并从 I 开始
   
@@ -34,8 +38,9 @@
   \end{center}
   
   % --- 设置附录正文格式 ---
-  \zihao{-4}
+  \zihao{-4} \songti
   \begin{spacing}{1.5}
+  \raggedbottom
 }{
   % --- 附录环境结束时执行 ---
   \end{spacing}

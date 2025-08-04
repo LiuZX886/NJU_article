@@ -4,7 +4,7 @@
 % Encoding:      UTF-8
 % Author:        ZX Liu
 % Create Date:   2025.7.26
-% Latest Update: 2025.7.27
+% Latest Update: 2025.8.4
 % Version:       1.0
 % Description:   南京大学本科生报告中文Latex模板
 
@@ -29,18 +29,19 @@
 \RequirePackage{njureference}         % 自定义参考文献格式
 \RequirePackage{njuacknowledgements}  % 自定义致谢格式
 \RequirePackage{njucode}              % 自定义代码块和语法高亮
-
+\RequirePackage{njufigtab}            % 自定义图表样式
+\RequirePackage{njualgorithm}         % 自定义算法样式
 
 % --- 设置页面格式 ---
 % 1. 页面尺寸设置
 \geometry{           % 标准： GB/T 9704-2012 
   a4paper,           % 纸张类型 A4
-  top=37mm,          % 天头(上白边) 37mm
+  top=25.4mm,        % 天头(上白边) 25.4mm
   left=28mm,         % 订口(左白边) 28mm
-  textwidth=156mm,   % 版心宽度 156mm
-  textheight=225mm,  % 版心高度 225mm
-  headheight=15pt,   % 为页眉预留空间
-  headsep=10mm,      % 页眉到正文的距离
+  %textwidth=156mm,   % 版心宽度 156mm
+  %textheight=225mm,  % 版心高度 225mm
+  %headheight=15pt,   % 为页眉预留空间
+  %headsep=10mm,      % 页眉到正文的距离
   footskip=20mm      % 页脚距离正文的距离
 }
 % 2. 页眉页脚设置
@@ -59,21 +60,36 @@
     Path = template/fonts/,
     BoldFont = SourceHanSansSC-Bold.otf
 ]
-\setCJKfamilyfont{kai}{ukai.ttf}[
-    Path = template/fonts/
+\setCJKfamilyfont{kai}{FZKTK.TTF}[
+    Path = template/fonts/,
+    BoldFont = FZCKJF.TTF
 ]
+\setCJKfamilyfont{song}{SourceHanSerifSC-Regular.otf}[
+    Path = template/fonts/,
+    BoldFont = SourceHanSerifSC-Bold.otf
+]
+\setCJKfamilyfont{fang}{FZFSK.TTF}[
+    Path = template/fonts/,
+    ItalicFont = FZFSK.TTF, 
+    AutoFakeSlant = 0.2
+]
+\renewcommand{\heiti}{\CJKfamily{hei}} % 黑体
+\renewcommand{\kaishu}{\CJKfamily{kai}} % 楷体
+\renewcommand{\songti}{\CJKfamily{song}} % 宋体
+\renewcommand{\fangsong}{\CJKfamily{fang}\upshape} % 仿宋体
 % 2. 西文字体设置
-\setmainfont{Times New Roman}
-%\setmainfont{STIXTwoText-Regular.otf}[
-%    Path = template/fonts/,
-%    BoldFont = STIXTwoText-Bold.otf,
-%    ItalicFont = STIXTwoText-Italic.otf,
-%    BoldItalicFont = STIXTwoText-BoldItalic.otf
-%]
+\setmainfont{times_regular.ttf}[
+    Path = template/fonts/,
+    BoldFont = times_bold.ttf,
+    ItalicFont = times_italic.ttf,
+    BoldItalicFont = times_bold_italic.ttf
+]
+\newcommand{\timesnewroman}{template/fonts/times_regular.ttf} % Times New Roman
 % 3. 数学字体设置
 \setmathfont{STIXTwoMath-Regular.otf}[
     Path = template/fonts/,
-    AutoFakeBold = 2.5
+    AutoFakeBold = 2.5,
+    ItalicFont = *
 ]
 
 % --- 多级标题格式设置 ---
@@ -81,8 +97,8 @@
   % 一级标题: 小四黑体, 编号格式 "一、"
   section = {
     format = \zihao{-4}\heiti,
-    number = \zhnum{section}、,
-    aftername = {}
+    number = \zhnum{section},
+    aftername = {、}
   },
   % 二级标题: 小四黑体, 编号格式 "（一）"
   subsection = {
@@ -93,7 +109,7 @@
   % 三级标题: 小四宋体加粗, 编号格式 "1."
   subsubsection = {
     format = \zihao{-4}\bfseries,
-    number = \arabic{subsubsection}.,
-    aftername = {\ }
+    number = \arabic{subsubsection},
+    aftername = {.}
   }
 }
